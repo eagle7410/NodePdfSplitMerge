@@ -1,5 +1,6 @@
 const ENV         = require('./lib/ENV');
 const ActionSplit = require('./lib/SplitAction')
+const ActionMerge = require('./lib/MergeAction')
 const {ACTIONS}   = require('./lib/constant');
 
 (async () => {
@@ -14,11 +15,12 @@ const {ACTIONS}   = require('./lib/constant');
 
         switch(env.params.Action) {
             case ACTIONS.SPLIT:
-                split = new ActionSplit(env)
+                const split = new ActionSplit(env)
                 await split.doit()
                 break;
             case ACTIONS.MERGE:
-                // TODO
+                const merge = new ActionMerge(env)
+                await merge.doit()
                 break;
         }
 
